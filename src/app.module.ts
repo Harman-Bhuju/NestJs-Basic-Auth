@@ -14,6 +14,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AccessTokenGuard } from './modules/auth/guards/access-token.guard';
 import { AuthorizationGuard } from './modules/auth/guards/authorization.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { HealthModule } from './modules/health/health.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { APP_GUARD } from '@nestjs/core';
     UserModule,
     EmailModule,
     FileModule,
+    HealthModule,
   ],
   providers: [
     AppService,
