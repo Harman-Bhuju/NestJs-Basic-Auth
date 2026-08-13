@@ -7,7 +7,12 @@ import {
   MemoryHealthIndicator,
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
-import { ApiOkResponse, ApiOperation, ApiServiceUnavailableResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiOkResponse,
+  ApiOperation,
+  ApiServiceUnavailableResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 import { Public } from 'src/common/decorators/public.decorator';
 
@@ -57,7 +62,8 @@ export class HealthController {
     },
   })
   @ApiServiceUnavailableResponse({
-    description: 'One or more checks failed (DB unreachable, disk over threshold, or memory RSS over threshold).',
+    description:
+      'One or more checks failed (DB unreachable, disk over threshold, or memory RSS over threshold).',
     schema: {
       type: 'object',
       properties: {
@@ -86,7 +92,7 @@ export class HealthController {
 
       () =>
         this.disk.checkStorage('storage', {
-          path: '/',
+          path: process.env.NODE_ENV === 'production' ? '/' : 'C:\\',
           thresholdPercent: Number(
             this.configService.get('HEALTH_DISK_THRESHOLD_PERCENT'),
           ),
@@ -95,7 +101,9 @@ export class HealthController {
       () =>
         this.memory.checkRSS(
           'memory_rss',
-          Number(this.configService.get('HEALTH_MEMORY_RSS_THRESHOLD_MB')) * 1024 * 1024,
+          Number(this.configService.get('HEALTH_MEMORY_RSS_THRESHOLD_MB')) *
+            1024 *
+            1024,
         ),
     ]);
   }
