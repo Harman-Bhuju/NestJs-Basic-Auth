@@ -55,6 +55,14 @@ export class RegisterUserDto {
   })
   password!: string;
 
+  @ApiProperty({
+    example: 'SecurePassword123!',
+    description: 'Must match the password.',
+  })
+  @IsString()
+  @IsNotEmpty()
+  confirmPassword!: string;
+
   // ════════════════════════════════════════════
   // Optional address fields — collected at registration but never
   // required, since plenty of valid signups won't have them yet.

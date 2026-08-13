@@ -54,11 +54,19 @@ export class AuthService {
   async register(
     dto: RegisterUserDto,
   ): Promise<{ message: string; userId: string; email: string }> {
+    if (dto.password !== dto.confirmPassword) {
+      throw new BadRequestException('Password and confirm password do not match');
+    }
+
     const existing = await this.userRepository.findOne({
       where: { email: dto.email },
     });
     if (existing) {
-      throw new ConflictException(`Email ${dto.email} is already registered`);
+      if (!existing.isEmailVerified) {
+        await this.userRepository.delete({ id: existing.id });
+      } else {
+        throw new ConflictException(`Email ${dto.email} is already registered`);
+      }
     }
 
     // Every self-registered user gets the baseline USER role. This row must
