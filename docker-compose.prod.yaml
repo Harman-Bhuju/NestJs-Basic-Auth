@@ -1,16 +1,9 @@
 services:
 
   api:
-    #harman0701 = Docker Hub username/namespace.
-    # It tells Docker which Docker Hub repository this image belongs to.
-    # This allows the production server to pull the image from
-    # your Docker Hub account.
-    image: harman0701/nestjs-basic-auth:1.0 # writing image name
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: harman0701/nestjs-basic-auth:1.0 # image name in prod
     container_name: nestjs-basic-auth
-    restart: unless-stopped
+    restart: unless-stopped  #it means if we do docker stop and docker start, it will not start automatically. But if we do docker restart, it will start automatically.
     ports:
       - "8000:8000"
     env_file:
