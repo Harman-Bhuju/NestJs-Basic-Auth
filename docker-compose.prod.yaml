@@ -5,7 +5,7 @@ services:
     container_name: nestjs-basic-auth
     restart: unless-stopped  #it means if we do docker stop and docker start, it will not start automatically. But if we do docker restart, it will start automatically.
     ports:
-      - "8000:8000"
+      - '127.0.0.1:5000:5000'
     env_file:
       - .env
     environment:
