@@ -1,7 +1,7 @@
 services:
 
   api:
-    image: harman0701/nestjs-basic-auth:1.0 # image name in prod
+    image: harman0701/nestjs-basic-auth:latest # image name in prod
     container_name: nestjs-basic-auth
     restart: unless-stopped  #it means if we do docker stop and docker start, it will not start automatically. But if we do docker restart, it will start automatically.
     ports:
@@ -23,15 +23,4 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    restart: unless-stopped
-    ports:
-      - "8080:80"
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-
-volumes:
-  postgres_data:
+ 
