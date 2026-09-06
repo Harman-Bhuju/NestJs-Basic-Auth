@@ -1,5 +1,4 @@
 services:
-
   api:
     image: harman0701/nestjs-basic-auth:latest # image name in prod
     container_name: nestjs-basic-auth
