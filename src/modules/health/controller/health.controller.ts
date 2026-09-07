@@ -92,7 +92,7 @@ export class HealthController {
 
       () =>
         this.disk.checkStorage('storage', {
-          path: process.env.NODE_ENV === 'production' ? '/' : 'C:\\',
+          path: '/',
           thresholdPercent: Number(
             this.configService.get('HEALTH_DISK_THRESHOLD_PERCENT'),
           ),
