@@ -31,8 +31,6 @@ function buildBaseTypeOrmOptions(): TypeOrmModuleOptions {
     maxQueryExecutionTime: 200,
     ssl: sslEnabled ? { rejectUnauthorized: false } : false,
     extra: {
-      // If SSL is enabled, add this property. If it isn't, don't add the property.
-      ...(sslEnabled ? { ssl: { rejectUnauthorized: false } } : {}),
       family: 4, // force IPv4
       max: 10, // 10 db connection at max
     },
