@@ -13,6 +13,6 @@ services:
     ports:
       - '127.0.0.1:5000:5000'
     env_file:
-      - .env
+      - .env.prod   # change this to .env when needed 
     environment:
       NODE_ENV: production
