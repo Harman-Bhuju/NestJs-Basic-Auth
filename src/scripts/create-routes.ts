@@ -3,9 +3,9 @@ import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
-import { Role as RoleEnum } from '../../src/common/enums/role.enum';
-import { Role } from '../../src/modules/auth/entities/role.entity';
-import { Authorization } from '../../src/modules/auth/entities/authorization.entity';
+import { Role as RoleEnum } from 'src/common/enums/role.enum';
+import { Role } from 'src/modules/auth/entities/role.entity';
+import { Authorization } from 'src/modules/auth/entities/authorization.entity';
 import { buildDataSourceOptions } from '../config/database/typeorm-options';
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
@@ -15,14 +15,7 @@ const POST = 'POST';
 const PUT = 'PUT';
 const PATCH = 'PATCH';
 const DELETE = 'DELETE';
-const FULL_ACCESS = [
-    GET,
-    POST,
-    PUT,
-    PATCH,
-    DELETE,
-];
-
+const FULL_ACCESS = [GET, POST, PUT, PATCH, DELETE];
 
 // Reuses the same DataSourceOptions the app and `npm run migration:*`
 // commands use (see src/data-source.ts) instead of hand-rolling a second,
