@@ -1,11 +1,18 @@
 services:
   api:
-    image: harman0701/nestjs-basic-auth:latest # image name in prod
+    image: harman0701/nestjs-basic-auth:latest
     container_name: nestjs-basic-auth
-    restart: unless-stopped  #it means if we do docker stop and docker start, it will not start automatically. But if we do docker restart, it will start automatically.
+    restart: unless-stopped
     ports:
       - '127.0.0.1:5000:5000'
     env_file:
       - .env
     environment:
       NODE_ENV: production
+    networks:
+      - postgres_network 
+
+networks:
+  postgres_network:
+    external: true
+    # it says this network already exists elsewhere, don't try to create it — just join it.
