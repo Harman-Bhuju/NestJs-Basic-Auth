@@ -22,6 +22,6 @@ RUN npm ci --omit=dev && npm cache clean --force
 
 COPY --from=builder /app/dist ./dist
 
-EXPOSE 8000
+EXPOSE 5000
 
 CMD ["npm", "run", "start:prod"]
