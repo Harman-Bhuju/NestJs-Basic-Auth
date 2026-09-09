@@ -8,11 +8,3 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: nestjs-basic-auth
-    restart: unless-stopped
-    ports:
-      - '127.0.0.1:5000:5000'
-    env_file:
-      - .env.prod   # change this to .env when needed 
-    environment:
-      NODE_ENV: production
