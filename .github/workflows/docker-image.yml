@@ -49,6 +49,5 @@ jobs:
             docker compose -f docker-compose.prod.yml pull
             docker compose -f docker-compose.prod.yml up -d
             docker image prune -f
-
-        
-    
+            docker exec nestjs-basic-auth npm run migration:run:prod
+            docker exec nestjs-basic-auth npm run seed:routes:prod
