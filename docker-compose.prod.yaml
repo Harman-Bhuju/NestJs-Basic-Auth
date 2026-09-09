@@ -14,5 +14,6 @@ services:
 
 networks:
   postgres_network:
+    name: postgres_network
     external: true
     # it says this network already exists elsewhere, don't try to create it — just join it.
